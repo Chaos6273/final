@@ -3,71 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>КиноТрендОбыкновенный</title>
+  <title>КиноТрендОбыкновенный — Каталог</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      background: radial-gradient(circle at 20% 20%, #0b0017, #020005);
-      color: #d9bfff;
-    }
-    ::selection {
-      background: #7f00ff;
-      color: white;
-    }
-    .neon-glow {
-      box-shadow: 0 0 10px rgba(143, 0, 255, 0.4), 0 0 25px rgba(143, 0, 255, 0.2);
-    }
-    .neon-text {
-      text-shadow: 0 0 10px rgba(143, 0, 255, 0.6), 0 0 20px rgba(143, 0, 255, 0.3);
+      background: radial-gradient(circle at top, #1a0026 0%, #0a0012 100%);
     }
   </style>
 </head>
-<body class="min-h-screen text-purple-100">
-  <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-gradient-to-r from-black via-[#1a0033] to-black shadow-lg sticky top-0 z-10 border-b border-purple-900">
-    <h1 class="text-3xl font-extrabold text-purple-400 tracking-wide neon-text">🎬 КиноТрендОбыкновенный</h1>
+<body class="text-purple-100 min-h-screen flex flex-col">
+  <!-- HEADER -->
+  <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-purple-950/60 backdrop-blur-md sticky top-0 z-10 border-b border-purple-800">
+    <h1 class="text-2xl font-bold text-purple-300 drop-shadow-[0_0_6px_#7e22ce]">
+      КиноТрендОбыкновенный
+    </h1>
 
     <div class="flex flex-wrap gap-3 items-center justify-between w-full sm:w-auto">
+      <!-- Поиск -->
       <input
         id="searchInput"
         type="text"
         placeholder="🔍 Поиск фильмов..."
-        class="bg-black/70 border border-purple-900 text-purple-300 placeholder-purple-600 px-3 py-2 rounded-lg w-full sm:w-60 focus:outline-none focus:ring-2 focus:ring-purple-700 transition"
+        class="bg-purple-900/70 text-purple-100 px-3 py-2 rounded-lg w-full sm:w-60 focus:outline-none focus:ring-2 focus:ring-purple-600"
       />
 
-      <select id="genreSelect" class="bg-black/70 border border-purple-900 text-purple-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-700 transition">
+      <!-- Жанры -->
+      <select id="genreSelect" class="bg-purple-900/70 text-purple-100 px-3 py-2 rounded-lg focus:ring-2 focus:ring-purple-600">
         <option value="comedy">Комедии</option>
         <option value="drama">Драмы</option>
         <option value="animation">Мультфильмы</option>
         <option value="horror">Ужасы</option>
       </select>
 
-      <button id="favoritesToggle" class="bg-purple-800 hover:bg-purple-900 neon-glow px-4 py-2 rounded-lg font-semibold text-white transition">
+      <!-- Избранное -->
+      <button id="favoritesToggle" class="bg-purple-700 hover:bg-purple-800 px-4 py-2 rounded-lg transition-all">
         Показать избранное
       </button>
     </div>
   </header>
 
-  <main class="p-6">
-    <div id="moviesContainer" class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"></div>
+  <!-- MAIN -->
+  <main class="p-4 flex-1">
+    <div id="moviesContainer" class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"></div>
+
     <div class="flex justify-center mt-6">
-      <button id="loadMoreBtn" class="bg-purple-800 hover:bg-purple-900 neon-glow px-6 py-2 rounded-lg hidden text-white transition">
+      <button id="loadMoreBtn" class="bg-purple-700 hover:bg-purple-800 px-6 py-2 rounded-lg hidden transition-all">
         Показать больше
       </button>
     </div>
   </main>
 
-  <!-- Модалка -->
-  <div
-    id="movieModal"
-    class="fixed inset-0 bg-black bg-opacity-0 opacity-0 scale-95 pointer-events-none transition-all duration-300 flex items-center justify-center z-20"
-  >
-    <div class="bg-black border border-purple-900 rounded-xl p-6 max-w-md w-full relative transform transition-all duration-300 scale-95 opacity-0 shadow-2xl neon-glow">
+  <!-- MODAL -->
+  <div id="movieModal" class="fixed inset-0 bg-black bg-opacity-0 opacity-0 scale-95 pointer-events-none transition-all duration-300 flex items-center justify-center z-20">
+    <div class="bg-purple-950/90 border border-purple-800 rounded-xl p-6 max-w-md w-11/12 sm:w-full relative transform transition-all duration-300 scale-95 opacity-0 shadow-[0_0_20px_#6d28d9]">
       <button id="closeModal" class="absolute top-3 right-3 text-purple-400 hover:text-purple-200 text-xl">✖</button>
-      <img id="modalPoster" class="rounded-lg mb-4 w-full shadow-md shadow-purple-900/50" src="" alt="Постер фильма" />
-      <h2 id="modalTitle" class="text-2xl font-bold mb-2 text-purple-300 neon-text"></h2>
-      <p id="modalYear" class="text-purple-500 text-sm mb-3"></p>
+      <img id="modalPoster" class="rounded-lg mb-4 w-full" src="" alt="Постер фильма" />
+      <h2 id="modalTitle" class="text-2xl font-bold mb-2 text-purple-300"></h2>
+      <p id="modalYear" class="text-purple-400 text-sm mb-3"></p>
       <p id="modalDescription" class="text-purple-200 mb-4"></p>
-      <button id="modalFavoriteBtn" class="bg-purple-800 hover:bg-purple-900 neon-glow w-full py-2 rounded-lg transition font-semibold">
+      <button id="modalFavoriteBtn" class="bg-purple-700 hover:bg-purple-800 w-full py-2 rounded-lg transition-all">
         Добавить в избранное
       </button>
     </div>
@@ -102,7 +96,7 @@
         currentIndex = 0;
         renderMovies();
       } catch {
-        container.innerHTML = '<p class="text-purple-400">Ошибка загрузки фильмов</p>';
+        container.innerHTML = '<p class="text-red-400">Ошибка загрузки фильмов</p>';
       }
     }
 
@@ -120,7 +114,7 @@
         );
         renderMovies();
       } catch {
-        container.innerHTML = '<p class="text-purple-400">Ошибка поиска фильмов</p>';
+        container.innerHTML = '<p class="text-red-400">Ошибка поиска фильмов</p>';
       }
     }
 
@@ -131,12 +125,12 @@
       display.forEach((movie) => {
         const card = document.createElement("div");
         card.className =
-          "bg-black border border-purple-900 rounded-xl p-3 shadow-lg hover:shadow-purple-900/60 cursor-pointer transition-transform hover:scale-105";
+          "bg-purple-950/80 border border-purple-800 rounded-xl p-3 shadow-md hover:shadow-[0_0_15px_#7e22ce] cursor-pointer transition-transform hover:scale-105";
         card.innerHTML = `
           <img src="${movie.posterURL || "https://via.placeholder.com/300x450?text=Нет+постера"}"
-               class="rounded-lg mb-3 w-full h-64 object-cover shadow-md shadow-purple-900/50" alt="Постер">
+               class="rounded-lg mb-3 w-full h-64 object-cover" alt="Постер">
           <h3 class="text-lg font-semibold mb-1 text-purple-300">${movie.title}</h3>
-          <p class="text-sm text-purple-600">${movie.year || "—"}</p>
+          <p class="text-sm text-purple-500">${movie.year || "—"}</p>
         `;
         card.addEventListener("click", () => openModal(movie));
         container.appendChild(card);
@@ -149,12 +143,10 @@
     }
 
     function openModal(movie) {
-      modalPoster.src =
-        movie.posterURL || "https://via.placeholder.com/300x450?text=Нет+постера";
+      modalPoster.src = movie.posterURL || "https://via.placeholder.com/300x450?text=Нет+постера";
       modalTitle.textContent = movie.title;
       modalYear.textContent = movie.year ? `Год: ${movie.year}` : "";
-      modalDescription.textContent =
-        movie.description || "Описание отсутствует.";
+      modalDescription.textContent = movie.description || "Описание отсутствует.";
       modalFavoriteBtn.textContent = favorites.find((f) => f.title === movie.title)
         ? "Удалить из избранного"
         : "Добавить в избранное";
@@ -185,8 +177,7 @@
       if (index > -1) favorites.splice(index, 1);
       else favorites.push(movie);
       localStorage.setItem("favorites", JSON.stringify(favorites));
-      modalFavoriteBtn.textContent =
-        index > -1 ? "Добавить в избранное" : "Удалить из избранного";
+      modalFavoriteBtn.textContent = index > -1 ? "Добавить в избранное" : "Удалить из избранного";
       if (showingFavorites) renderMovies();
     }
 
