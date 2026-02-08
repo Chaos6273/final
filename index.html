@@ -3,34 +3,45 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>КиноТрендОбыкновенный — Приветствие</title>
+  <title>КиноТрендОткрытие - Приветствие</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      background: radial-gradient(circle at center, #1a0026 0%, #0a0012 100%);
+      background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
+    }
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0.5;
+      }
+    }
+    .neon-flicker {
+      animation: flicker 2.5s infinite;
     }
   </style>
 </head>
-<body class="text-purple-100 min-h-screen flex flex-col items-center justify-center px-4 text-center">
+<body class="text-gray-200 min-h-screen flex flex-col items-center justify-center px-4 text-center font-sans">
   <div class="max-w-3xl w-full flex flex-col items-center">
-    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-purple-300 drop-shadow-[0_0_10px_#6d28d9] leading-snug">
-      Добро пожаловать в <span class="text-purple-400">КиноТрендОбыкновенный</span><br class="hidden sm:block">
-      Сокращенно — <span class="text-purple-500 font-extrabold">КТО?</span>
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-yellow-300 drop-shadow-[0_0_15px_#facc15] leading-snug tracking-wide neon-flicker">
+      Добро пожаловать в <span class="text-red-500">КиноТрендОткрытие</span><br class="hidden sm:block">
+      Сокращенно — <span class="text-red-600 font-extrabold">КТО?</span>
     </h1>
 
-    <p class="text-purple-300 text-base sm:text-lg md:text-xl mb-8 leading-relaxed">
-      Здесь ты найдёшь культовые фильмы, которые должен знать каждый.  
-      Особенность этого проекта — ты можешь открывать интересные картины, ничего о них не зная.  
-      Исследуй кино-мир и, возможно, откроешь своего нового любимого героя 🎬
+    <p class="text-gray-300 text-base sm:text-lg md:text-xl mb-8 leading-relaxed drop-shadow-[0_0_8px_#dc2626]">
+      Здесь ты найдёшь затягивающие сериалы, которые должен знать каждый.  
+      Особенность этого проекта - ты можешь открывать интересные картины, ничего о них не зная.  
+      Исследуй мир и, возможно, откроешь своего нового любимого героя 🎬
     </p>
 
     <a href="catalog.html"
-       class="w-full sm:w-auto px-8 py-3 bg-purple-700 hover:bg-purple-800 rounded-lg text-lg font-semibold shadow-lg shadow-purple-900 transition-all hover:scale-105">
+       class="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-800 hover:to-black rounded-lg text-lg font-semibold shadow-lg shadow-black transition-transform hover:scale-105 hover:shadow-[0_0_20px_#dc2626]">
        Перейти
     </a>
   </div>
 
-  <footer class="absolute bottom-4 text-xs sm:text-sm text-purple-600">
+  <footer class="absolute bottom-4 text-xs sm:text-sm text-gray-500 drop-shadow-[0_0_6px_#facc15]">
     Сделано в подвале ❤️
   </footer>
 </body>
